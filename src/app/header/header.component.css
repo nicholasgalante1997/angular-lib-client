@@ -1,5 +1,5 @@
 p {
-    color: darkred;
+    color: white;
     font-style: italic;
     font-family: 'Cormorant', serif;
     margin-left: 16px;
@@ -13,22 +13,27 @@ h4 {
   font-weight: 800;
   border-bottom: 1px solid whitesmoke;
   border-bottom-width: thin;
+  color: black;
 }
 
 img {
   margin-left: 8px;
 }
 
-a {
+li {
+  margin-top: 10px;
+}
+
+.nav-custom {
+  background-color: #407294;
+}
+
+.nav-custom-link {
   font-family: 'Cormorant', serif;
   font-size: large;
   margin-right: 12px;
-  color: white;
+  color: black;
   font-weight: 800;
   font-size: 24px;
-}
-
-li {
-  margin-top: 10px;
 }
 
