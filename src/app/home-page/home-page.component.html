@@ -3,8 +3,9 @@
     <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
       Home page content
     </div>
-    <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
-      Book of the day
+    <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 right">
+      <br>
+      <app-book-showcase *ngIf="bookOfTheDay" [book]="bookOfTheDay" [author]="author"></app-book-showcase>
     </div>
   </div>
 </div>

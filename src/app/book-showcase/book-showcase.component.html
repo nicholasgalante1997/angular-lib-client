@@ -1,0 +1,11 @@
+<div class="card bg-card">
+  <br>
+  <img class="card-img-top resize left" [src]="book.coverUrl" height="200" width="100%" alt="Book of the day" />
+  <div class="card-body shadowbox">
+    <h4 class="card-title">
+      {{book.title}}
+    </h4>
+      <small class="text-muted">{{author.name}}</small>
+    <p class="card-text">{{book.synopsis}}</p>
+  </div>
+</div>

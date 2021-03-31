@@ -1,0 +1,24 @@
+.resize {
+  object-fit: contain;
+}
+
+.shadowbox {
+  /* background-color: #407294; */
+  border-radius: 15px;
+}
+
+.bg-card {
+  background-color: rgb(78, 77, 77);
+}
+
+h4 {
+  color: whitesmoke;
+  border-bottom: 2px solid whitesmoke;
+  font-family: 'Cormorant', serif;
+}
+
+p {
+  color: white;
+  font-size: small;
+  font-style: italic;
+}
