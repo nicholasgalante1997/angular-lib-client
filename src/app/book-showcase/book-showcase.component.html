@@ -1,11 +1,16 @@
-<div class="card bg-card">
+<div class="container-fluid bg-offset curve">
   <br>
-  <img class="card-img-top resize left" [src]="book.coverUrl" height="200" width="100%" alt="Book of the day" />
-  <div class="card-body shadowbox">
-    <h4 class="card-title">
-      {{book.title}}
-    </h4>
-      <small class="text-muted">{{author.name}}</small>
-    <p class="card-text">{{book.synopsis}}</p>
+  <div class="row">
+    <div class="col-5">
+      <img [src]="book.coverUrl" height="240px" width="200px" class="rezize" />
+    </div>
+    <div class="col-7">
+      <h4>{{book.title}}</h4>
+      <hr>
+      <p><em>{{author.name}}</em></p>
+      <br>
+      <p>{{book.synopsis}}</p>
+    </div>
   </div>
+  <br>
 </div>

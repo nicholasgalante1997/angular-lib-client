@@ -1,12 +1,10 @@
-import { AfterContentChecked, AfterContentInit, Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
+import { AfterContentInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import Book from '../models/book';
 import Author from '../models/author'
 import { BookService } from '../services/book.service';
 import { AuthorService } from '../services/author.service';
-import { ThrowStmt } from '@angular/compiler';
-
 
 @Component({
   selector: 'app-home-page',

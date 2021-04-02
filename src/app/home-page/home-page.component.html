@@ -1,11 +1,17 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
-      Home page content
+      <br>
+      <app-welcome></app-welcome>
+      <br>
     </div>
     <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 right">
+      <div>
+        <h6>Editor's Pick of the Day</h6>
+      </div>
       <br>
       <app-book-showcase *ngIf="bookOfTheDay" [book]="bookOfTheDay" [author]="author"></app-book-showcase>
+      <br>
     </div>
   </div>
 </div>

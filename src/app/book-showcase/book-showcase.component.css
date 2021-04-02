@@ -7,13 +7,20 @@
   border-radius: 15px;
 }
 
-.bg-card {
-  background-color: rgb(78, 77, 77);
+.curve {
+  border-radius: 16px;
+}
+
+.bg-offset {
+  background-color: #409462;
+}
+
+.title-text {
+  text-align: left;
 }
 
 h4 {
   color: whitesmoke;
-  border-bottom: 2px solid whitesmoke;
   font-family: 'Cormorant', serif;
 }
 

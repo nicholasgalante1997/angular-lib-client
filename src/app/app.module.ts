@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BookShowcaseComponent } from './book-showcase/book-showcase.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { BookShowcaseComponent } from './book-showcase/book-showcase.component';
     HeaderComponent,
     HomePageComponent,
     BookShowcaseComponent,
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,
