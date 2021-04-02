@@ -9,6 +9,11 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BookShowcaseComponent } from './book-showcase/book-showcase.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LibraryPageComponent } from './library-page/library-page.component';
+import { BookComponent } from './book/book.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { GenreBarComponent } from './genre-bar/genre-bar.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +22,11 @@ import { WelcomeComponent } from './welcome/welcome.component';
     HomePageComponent,
     BookShowcaseComponent,
     WelcomeComponent,
+    PageNotFoundComponent,
+    LibraryPageComponent,
+    BookComponent,
+    SearchBarComponent,
+    GenreBarComponent,
   ],
   imports: [
     BrowserModule,
