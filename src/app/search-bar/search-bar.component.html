@@ -1,1 +1,4 @@
-<p>search-bar works!</p>
+<div class="custom-row">
+<input placeholder="Search for a book here " type="text" name="search" #search [(ngModel)]="searchValue" (input)="onInput()">
+<button class="btn btn-primary" (click)="onSearchPress()">Search </button>
+</div>

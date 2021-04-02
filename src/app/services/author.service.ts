@@ -14,4 +14,9 @@ export class AuthorService {
     return this.http.get<Author[]>(adjustedEndpoint);
   }
 
+  getAuthorById(id: number): Observable<Author>{
+    const adjustedEndpoint = `${env.API_DOMAIN}/${this.baseEndpoint}/${id}`;
+    return this.http.get<Author>(adjustedEndpoint);
+  }
+
 }

@@ -14,6 +14,7 @@ import { LibraryPageComponent } from './library-page/library-page.component';
 import { BookComponent } from './book/book.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { GenreBarComponent } from './genre-bar/genre-bar.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { GenreBarComponent } from './genre-bar/genre-bar.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
