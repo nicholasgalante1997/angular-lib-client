@@ -19,4 +19,9 @@ export class BookService {
     const adjustedEndpoint: string = `${env.API_DOMAIN}/${this.baseEndpoint}/7`;
     return this.http.get<Book>(adjustedEndpoint);
   }
+
+  getBookById(bookId: number): Observable<Book> {
+    const adjustedEndpoint: string = `${env.API_DOMAIN}/${this.baseEndpoint}/${bookId}`;
+    return this.http.get<Book>(adjustedEndpoint);
+  }
 }

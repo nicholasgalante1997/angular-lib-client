@@ -15,6 +15,9 @@ import { BookComponent } from './book/book.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { GenreBarComponent } from './genre-bar/genre-bar.component';
 import { CommonModule } from '@angular/common';
+import { BookShowPageComponent } from './book-show-page/book-show-page.component';
+import { RecommendedBookcaseComponent } from './recommended-bookcase/recommended-bookcase.component';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { CommonModule } from '@angular/common';
     BookComponent,
     SearchBarComponent,
     GenreBarComponent,
+    BookShowPageComponent,
+    RecommendedBookcaseComponent,
+    SearchPipe,
   ],
   imports: [
     BrowserModule,

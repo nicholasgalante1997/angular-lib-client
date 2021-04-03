@@ -4,6 +4,9 @@
      <div>
        <h6>{{book.title}}</h6>
        <p class="left"><em>{{author.name}}</em></p>
+       <button (click)="onMoreInfoPress(book.bookId)" class="btn btn-secondary left">
+         More Info
+       </button>
      </div>
     </div>
   <hr>
