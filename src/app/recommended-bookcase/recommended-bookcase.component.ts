@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BookService } from '../services/book.service';
+import { GenreServiceService } from '../services/genre-service.service';
 
 @Component({
   selector: 'app-recommended-bookcase',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecommendedBookcaseComponent implements OnInit {
 
-  constructor() { }
+  constructor(private bookService: BookService, private genreService: GenreServiceService) { }
 
   ngOnInit(): void {
   }

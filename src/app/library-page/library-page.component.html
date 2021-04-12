@@ -4,7 +4,7 @@
       <h6>Check out our books</h6>
     </div>
     <div class="col-4 offset-4">
-      <app-search-bar (searchPressEvent)="setSearchedTerm($event)"></app-search-bar>
+      <app-search-bar (resetSearchEvent)="setSearchedTerm($event)"   (searchPressEvent)="setSearchedTerm($event)"></app-search-bar>
     </div>
   </div>
   <div class="row lower">

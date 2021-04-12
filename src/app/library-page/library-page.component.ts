@@ -19,6 +19,10 @@ export class LibraryPageComponent implements OnInit {
     this.searchedTerm = str;
   }
 
+  resetSearchedTerm(): void {
+    this.searchedTerm = '';
+  }
+
   constructor(private bookService: BookService, private authorService: AuthorService) { }
 
   ngOnInit(): void {
