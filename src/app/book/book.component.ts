@@ -25,7 +25,7 @@ export class BookComponent implements OnInit {
   }
 
   onMoreInfoPress(bookId: number): void {
-    this.router.navigate(['library', 'shelves', 'book', this.book.bookId]);
+    this.router.navigate(['/', 'library', 'shelves', 'book', this.book.bookId]);
   }
 
 }

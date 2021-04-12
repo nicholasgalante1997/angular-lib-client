@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import Book from '../models/book';
 import { BookService } from '../services/book.service';
-import { GenreServiceService } from '../services/genre-service.service';
 
 @Component({
   selector: 'app-recommended-bookcase',
@@ -9,9 +9,16 @@ import { GenreServiceService } from '../services/genre-service.service';
 })
 export class RecommendedBookcaseComponent implements OnInit {
 
-  constructor(private bookService: BookService, private genreService: GenreServiceService) { }
+  @Input() displayBook: Book;
+  books: Book[] = [];
+  constructor(private bookService: BookService) { }
 
   ngOnInit(): void {
+    this.bookService.getAllBooks().subscribe(
+      (books) => {console.log(books); this.books = books; },
+      (err) => console.log(err),
+      () => console.log('complete')
+    );
   }
 
 }

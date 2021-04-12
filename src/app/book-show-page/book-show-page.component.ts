@@ -41,7 +41,9 @@ export class BookShowPageComponent implements OnInit, AfterViewChecked {
   }
 
   ngOnInit(): void {
-   this.routeParamId = this.route.snapshot.params['id'];
+   this.route.params.subscribe(
+     (params) => this.routeParamId = +params['id']
+   );
    this.bookService.getBookById(this.routeParamId).subscribe(
      (book) => { console.log(book); this.book = book; },
      (err) => alert(err.message)

@@ -18,6 +18,7 @@ import { CommonModule } from '@angular/common';
 import { BookShowPageComponent } from './book-show-page/book-show-page.component';
 import { RecommendedBookcaseComponent } from './recommended-bookcase/recommended-bookcase.component';
 import { SearchPipe } from './search.pipe';
+import { GenrePipe } from './genre.pipe';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { SearchPipe } from './search.pipe';
     BookShowPageComponent,
     RecommendedBookcaseComponent,
     SearchPipe,
+    GenrePipe
   ],
   imports: [
     BrowserModule,
