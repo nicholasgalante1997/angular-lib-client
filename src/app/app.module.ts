@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {ReactiveFormsModule} from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -19,6 +19,8 @@ import { BookShowPageComponent } from './book-show-page/book-show-page.component
 import { RecommendedBookcaseComponent } from './recommended-bookcase/recommended-bookcase.component';
 import { SearchPipe } from './search.pipe';
 import { GenrePipe } from './genre.pipe';
+import { UploadPageComponent } from './upload-page/upload-page.component';
+import { UploadformComponent } from './uploadform/uploadform.component';
 
 @NgModule({
   declarations: [
@@ -35,14 +37,17 @@ import { GenrePipe } from './genre.pipe';
     BookShowPageComponent,
     RecommendedBookcaseComponent,
     SearchPipe,
-    GenrePipe
+    GenrePipe,
+    UploadPageComponent,
+    UploadformComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

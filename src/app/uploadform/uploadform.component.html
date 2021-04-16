@@ -1,0 +1,37 @@
+<form [formGroup]="uploadForm" (ngSubmit)="onSubmit($event)">
+  <h6>We love donations to our library!</h6>
+  <div class="form-group">
+    <fieldset formGroupName="book">
+      <label>Title</label>
+      <input type="text" class="form-control" formControlName="bookTitle" />
+      <label>Cover Image URL (Image Address)</label>
+      <input type="text" class="form-control" formControlName="bookImgUrl" />
+    <div class="form-group">
+      <label>Genre</label>
+      <select class="form-control" formControlName="genre" name="genre">
+        <option value="Javascript/React">Javascript/React</option>
+        <option value="Javascript/TypeScript/Angular">TypeScript/Angular</option>
+        <option value="/Javascript/Node/Express">Node JS/ Express JS</option>
+        <option value="Java">Java</option>
+        <option value="Java/Spring Boot">Java/Spring Boot</option>
+        <option value="Ruby">Ruby</option>
+        <option value="Ruby on Rails">Ruby on Rails</option>
+        <option value="CSS/Bootstrap">Bootstrap/CSS</option>
+        <option value="Serverless/AWS">AWS</option>
+        <option value="Other">Write In</option>
+      </select>
+    </div>
+    </fieldset>
+    <div class="form-group">
+      <label>Author Name</label>
+      <input type="text" class="form-control" formControlName="authorName"/>
+      <label>Honorable Mention</label>
+      <textarea
+        placeholder="Say a few words about the author..."
+        type="text" class="form-control"
+        formControlName="authorHonorableMention">
+      </textarea>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-dark">Submit</button>
+</form>
