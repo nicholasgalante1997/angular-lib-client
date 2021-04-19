@@ -1,11 +1,19 @@
 <form [formGroup]="uploadForm" (ngSubmit)="onSubmit($event)">
   <h6>We love donations to our library!</h6>
   <div class="form-group">
-    <fieldset formGroupName="book">
       <label>Title</label>
       <input type="text" class="form-control" formControlName="bookTitle" />
+      <p class="text-danger" *ngIf="uploadForm.controls.bookTitle.status != 'VALID' && uploadForm.controls.bookTitle.touched && uploadForm.controls.bookTitle.errors.required">
+        Book title is required!
+      </p>
+      <p class="text-danger" *ngIf="uploadForm.controls.bookTitle.status != 'VALID' && uploadForm.controls.bookTitle.touched && uploadForm.controls.bookTitle.errors && uploadForm.controls.bookTitle.errors.titleErr">
+        {{uploadForm.controls.bookTitle.errors.titleErr.message}}
+      </p>
       <label>Cover Image URL (Image Address)</label>
       <input type="text" class="form-control" formControlName="bookImgUrl" />
+      <p class="text-danger" *ngIf="uploadForm.controls.bookImgUrl.status != 'VALID' && uploadForm.controls.bookImgUrl.touched && uploadForm.controls.bookImgUrl.errors.required">
+        Book Cover Image is required!
+      </p>
     <div class="form-group">
       <label>Genre</label>
       <select class="form-control" formControlName="genre" name="genre">
@@ -18,19 +26,31 @@
         <option value="Ruby on Rails">Ruby on Rails</option>
         <option value="CSS/Bootstrap">Bootstrap/CSS</option>
         <option value="Serverless/AWS">AWS</option>
-        <option value="Other">Write In</option>
+        <option value="Other">Other</option>
       </select>
+      <input *ngIf="uploadForm.controls.genre.value === 'Other'"
+      [(ngModel)]="customGenre" type="text" name="custom-genre"
+      class="form-control mTop"
+      placeholder="Fill in the book's genre here..."/>
     </div>
-    </fieldset>
     <div class="form-group">
       <label>Author Name</label>
       <input type="text" class="form-control" formControlName="authorName"/>
+      <p class="text-danger" *ngIf="uploadForm.controls.authorName.status != 'VALID' && uploadForm.controls.authorName.touched && uploadForm.controls.authorName.errors.required">
+        Author Name is required!
+      </p>
+      <p class="text-danger" *ngIf="uploadForm.controls.authorName.status != 'VALID' && uploadForm.controls.authorName.touched && uploadForm.controls.authorName.errors.authorNameErr">
+        {{uploadForm.controls.authorName.errors.authorNameErr.message}}
+      </p>
       <label>Honorable Mention</label>
       <textarea
         placeholder="Say a few words about the author..."
         type="text" class="form-control"
         formControlName="authorHonorableMention">
       </textarea>
+      <p class="text-danger" *ngIf="uploadForm.controls.authorHonorableMention.status != 'VALID' && uploadForm.controls.authorHonorableMention.touched && uploadForm.controls.authorHonorableMention.errors.required">
+        Author Name is required!
+      </p>
     </div>
   </div>
   <button type="submit" class="btn btn-dark">Submit</button>
