@@ -21,4 +21,11 @@ export class GenreServiceService {
     const adjustedEndpoint = `${env.API_DOMAIN}/${this.baseEndpoint}/${genreId}`;
     return this.http.get<Genre>(adjustedEndpoint);
   }
+
+  create(genre: Genre): Observable<string> {
+    const adjustedEndpoint = `${env.API_DOMAIN}/${this.baseEndpoint}`;
+    return this.http.post<string>(adjustedEndpoint, {
+      genre: genre.genre
+    });
+  }
 }

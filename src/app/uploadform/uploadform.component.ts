@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import Book from '../models/book';
+import Genre from '../models/genre';
+import { GenreServiceService } from '../services/genre-service.service';
 
 @Component({
   selector: 'app-uploadform',
@@ -10,7 +13,7 @@ export class UploadformComponent implements OnInit {
 
   uploadForm: FormGroup;
   customGenre: string;
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private genreService: GenreServiceService) { }
 
   ngOnInit(): void {
     this.uploadForm = this.formBuilder.group({
@@ -43,6 +46,12 @@ export class UploadformComponent implements OnInit {
         message: "Author Name must follow this format \nex. 'Nadir Dabit"
       }
     }
+  }
 
+  async onFormSubmission($event) {
+    $event.preventDefault();
+    const genreObject: Genre = new Genre(this.uploadForm.controls.genre.value);
+    const newGenreId: string = await this.genreService.create(genreObject).toPromise();
+    console.log(newGenreId);
   }
 }
