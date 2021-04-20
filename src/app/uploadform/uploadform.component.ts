@@ -106,4 +106,25 @@ export class UploadformComponent implements OnInit {
         return;
     }
   }
+
+  onBackPress(current: string): void {
+    switch (current) {
+      case 'imageUrl':
+        this.bookTitle = undefined;
+        break;
+      case 'synopsis':
+        this.bookCoverUrl = undefined;
+        break;
+      case 'genre':
+        this.bookSynopsis = undefined;
+        break;
+      case 'author':
+        this.existingGenre = undefined;
+        break;
+      default:
+        this.authorHonorableMention = undefined;
+        this.authorName = undefined;
+        return;
+    }
+  }
 }

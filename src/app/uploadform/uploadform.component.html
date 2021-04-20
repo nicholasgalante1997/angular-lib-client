@@ -1,13 +1,13 @@
-<div class="container-fluid center">
 <form [formGroup]="uploadForm" (ngSubmit)="onFormSubmission($event)">
-  <h6 class="text-lg-center">We love donations to our library!</h6>
+  <h6 class="text-lg-center leadText">We love donations to our library!</h6>
+  <hr>
   <div class="form-group">
     <div class="form-group"
     #bookTitleInput
     *ngIf="!bookTitle">
-      <label class="text-center">Title</label>
+      <label class="text-center labelText">Title</label>
       <input type="text"
-      class="form-control"
+      class="form-control customInput"
       formControlName="bookTitle"
       placeholder="Full Stack Serverless"
       />
@@ -29,7 +29,7 @@
       <button
       (click)="onNextPress('title')"
       type="button"
-      class="btn btn-dark"
+      class="btn btn-dark btn-block"
       [disabled]="uploadForm.controls.bookTitle.status === 'INVALID'"
       >
         Next
@@ -39,9 +39,9 @@
     #bookCoverImageInput
     *ngIf="!!bookTitle && !bookCoverUrl"
     >
-      <label>Cover Image URL (Image Address)</label>
+      <label class="labelText">Cover Image URL (Image Address)</label>
       <input type="text"
-      class="form-control"
+      class="form-control customInput"
       formControlName="bookImgUrl"
       placeholder="http://..."
       />
@@ -55,22 +55,28 @@
       <button
       (click)="onNextPress('imageUrl')"
       type="button"
-      class="btn btn-dark"
+      class="btn btn-dark btn-block buttonBottom"
       [disabled]="uploadForm.controls.bookImgUrl.status === 'INVALID'"
       >
         Next
+      </button>
+      <button
+      (click)="onBackPress('imageUrl')"
+      type="button"
+      class="btn btn-warning btn-block"
+      >
+        Back
       </button>
     </div>
     <div class="form-group"
     #bookSynopsisInput
     *ngIf="!!bookCoverUrl && !bookSynopsis"
     >
-      <label>Synopsis</label>
+      <label class="labelText">Synopsis</label>
       <textarea
-        placeholder="Straight up,
-        just copy and paste the summary from amazon or something,
-        sky's the limit here."
-        type="text" class="form-control"
+        placeholder="Straight up, just copy and paste the summary from amazon or something, sky's the limit here."
+        type="text"
+        class="form-control customInput"
         formControlName="bookSynopsis">
       </textarea>
       <p class="text-danger"
@@ -93,18 +99,27 @@
       <button
       (click)="onNextPress('synopsis')"
       type="button"
-      class="btn btn-dark"
+      class="btn btn-dark btn-block buttonBottom"
       [disabled]="uploadForm.controls.bookSynopsis.status === 'INVALID'"
       >
         Next
+      </button>
+      <button
+      (click)="onBackPress('synopsis')"
+      type="button"
+      class="btn btn-warning btn-block"
+      >
+        Back
       </button>
     </div>
     <div class="form-group"
     #genreInput
     *ngIf="!!bookSynopsis && !existingGenre"
     >
-      <label>Genre</label>
-      <select class="form-control" formControlName="genre" name="genre" >
+      <label class="labelText">Genre</label>
+      <select class="form-control customInput"
+      formControlName="genre"
+      name="genre" >
         <option value="Javascript/React">Javascript/React</option>
         <option value="Javascript/TypeScript/Angular">TypeScript/Angular</option>
         <option value="/Javascript/Node/Express">Node JS/ Express JS</option>
@@ -118,24 +133,31 @@
       </select>
       <input *ngIf="uploadForm.controls.genre.value === 'Other'"
       [(ngModel)]="customGenre" type="text" name="custom-genre"
-      class="form-control mTop"
+      class="form-control mTop customInput"
       placeholder="Fill in the book's genre here..."/>
       <button
       (click)="onNextPress('genre')"
       type="button"
-      class="btn btn-dark"
+      class="btn btn-dark btn-block buttonBottom"
       [disabled]="uploadForm.controls.genre.status === 'INVALID'"
       >
         Next
+      </button>
+      <button
+      (click)="onBackPress('genre')"
+      type="button"
+      class="btn btn-warning btn-block"
+      >
+        Back
       </button>
     </div>
     <div class="form-group"
     #authorInputs
     *ngIf="!!existingGenre && !authorName && !authorHonorableMention"
     >
-      <label>Author Name</label>
+      <label class="labelText">Author Name</label>
       <input type="text"
-      class="form-control"
+      class="form-control customInput"
       formControlName="authorName"
       placeholder="Nadir Dabit"/>
       <p class="text-danger"
@@ -152,10 +174,11 @@
       >
         {{uploadForm.controls.authorName.errors.authorNameErr.message}}
       </p>
-      <label>Honorable Mention</label>
+      <label class="labelText">Honorable Mention</label>
       <textarea
         placeholder="Say a few words about the author..."
-        type="text" class="form-control"
+        type="text"
+        class="form-control customInput"
         formControlName="authorHonorableMention">
       </textarea>
       <p class="text-danger"
@@ -182,10 +205,17 @@
       <button
       (click)="onNextPress('author')"
       type="button"
-      class="btn btn-dark"
+      class="btn btn-dark btn-block buttonBottom"
       [disabled]="uploadForm.status === 'INVALID'"
       >
         Next
+      </button>
+      <button
+      (click)="onBackPress('author')"
+      type="button"
+      class="btn btn-warning btn-block"
+      >
+        Back
       </button>
     </div>
   </div>
@@ -193,11 +223,22 @@
   #reviewForm
   *ngIf="!!authorHonorableMention && !!authorName && uploadForm.status === 'VALID'"
   >
+  <h6 class="labelText">Final Review</h6>
+  <p>Title: {{uploadForm.controls.bookTitle.value}}</p>
+  <p>Image: <img class="img-fluid" [src]="bookCoverUrl" width="40px" height="40px" style="resize: cover;" /></p>
+  <p>Synopsis: {{uploadForm.controls.bookSynopsis.value}}</p>
+  <p>Genre: {{existingGenre}}</p>
+  <p>Author: {{uploadForm.controls.authorName.value}}</p>
+  <p>Mention: {{uploadForm.controls.authorHonorableMention.value}}</p>
     <button type="submit"
-    class="btn btn-dark"
+    class="btn btn-dark btn-block"
     [disabled]="uploadForm.status === 'INVALID'"
     >Submit
     </button>
+    <button type="submit"
+    class="btn btn-warning btn-block"
+    (click)="onBackPress()"
+    >Back
+    </button>
   </div>
 </form>
-</div>

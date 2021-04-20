@@ -6,3 +6,34 @@
   justify-content: center;
   align-items: center;
 }
+
+.leadText{
+  font-size: 44px;
+  color: aliceblue;
+  font-variant: small-caps;
+  font-style: italic;
+}
+
+.labelText {
+  font-size: 32px;
+  color: aliceblue;
+  font-variant-caps: titling-caps;
+  text-align: center;
+  align-self: center;
+  margin-bottom: 22px;
+}
+
+.customInput {
+  margin-bottom: 22px;
+  max-width: '100%';
+}
+
+.buttonBottom {
+  margin-bottom: 22px;
+}
+
+p {
+  color: whitesmoke;
+  font-size: 16px;
+  font-variant: small-caps;
+}
