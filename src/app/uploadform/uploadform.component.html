@@ -1,22 +1,110 @@
+<div class="container-fluid center">
 <form [formGroup]="uploadForm" (ngSubmit)="onFormSubmission($event)">
-  <h6>We love donations to our library!</h6>
+  <h6 class="text-lg-center">We love donations to our library!</h6>
   <div class="form-group">
-      <label>Title</label>
-      <input type="text" class="form-control" formControlName="bookTitle" />
-      <p class="text-danger" *ngIf="uploadForm.controls.bookTitle.status != 'VALID' && uploadForm.controls.bookTitle.touched && uploadForm.controls.bookTitle.errors.required">
+    <div class="form-group"
+    #bookTitleInput
+    *ngIf="!bookTitle">
+      <label class="text-center">Title</label>
+      <input type="text"
+      class="form-control"
+      formControlName="bookTitle"
+      placeholder="Full Stack Serverless"
+      />
+      <p class="text-danger"
+      *ngIf="uploadForm.controls.bookTitle.status != 'VALID' &&
+        uploadForm.controls.bookTitle.touched &&
+        uploadForm.controls.bookTitle.errors.required"
+      >
         Book title is required!
       </p>
-      <p class="text-danger" *ngIf="uploadForm.controls.bookTitle.status != 'VALID' && uploadForm.controls.bookTitle.touched && uploadForm.controls.bookTitle.errors && uploadForm.controls.bookTitle.errors.titleErr">
+      <p class="text-danger"
+      *ngIf="uploadForm.controls.bookTitle.status != 'VALID' &&
+        uploadForm.controls.bookTitle.touched &&
+        uploadForm.controls.bookTitle.errors &&
+        uploadForm.controls.bookTitle.errors.titleErr"
+      >
         {{uploadForm.controls.bookTitle.errors.titleErr.message}}
       </p>
+      <button
+      (click)="onNextPress('title')"
+      type="button"
+      class="btn btn-dark"
+      [disabled]="uploadForm.controls.bookTitle.status === 'INVALID'"
+      >
+        Next
+      </button>
+    </div>
+    <div class="form-group"
+    #bookCoverImageInput
+    *ngIf="!!bookTitle && !bookCoverUrl"
+    >
       <label>Cover Image URL (Image Address)</label>
-      <input type="text" class="form-control" formControlName="bookImgUrl" />
-      <p class="text-danger" *ngIf="uploadForm.controls.bookImgUrl.status != 'VALID' && uploadForm.controls.bookImgUrl.touched && uploadForm.controls.bookImgUrl.errors.required">
+      <input type="text"
+      class="form-control"
+      formControlName="bookImgUrl"
+      placeholder="http://..."
+      />
+      <p class="text-danger"
+      *ngIf="uploadForm.controls.bookImgUrl.status != 'VALID' &&
+        uploadForm.controls.bookImgUrl.touched &&
+        uploadForm.controls.bookImgUrl.errors.required"
+      >
         Book Cover Image is required!
       </p>
-    <div class="form-group">
+      <button
+      (click)="onNextPress('imageUrl')"
+      type="button"
+      class="btn btn-dark"
+      [disabled]="uploadForm.controls.bookImgUrl.status === 'INVALID'"
+      >
+        Next
+      </button>
+    </div>
+    <div class="form-group"
+    #bookSynopsisInput
+    *ngIf="!!bookCoverUrl && !bookSynopsis"
+    >
+      <label>Synopsis</label>
+      <textarea
+        placeholder="Straight up,
+        just copy and paste the summary from amazon or something,
+        sky's the limit here."
+        type="text" class="form-control"
+        formControlName="bookSynopsis">
+      </textarea>
+      <p class="text-danger"
+      *ngIf="uploadForm.controls.bookSynopsis.status != 'VALID' &&
+      uploadForm.controls.bookSynopsis.touched &&
+      uploadForm.controls.bookSynopsis.errors.required"
+      >
+        The book synopsis is required so other readers can know what this book is about
+      </p>
+      <p class="text-danger" *ngIf="uploadForm.controls.bookSynopsis.status != 'VALID' && uploadForm.controls.bookSynopsis.touched && uploadForm.controls.bookSynopsis.errors.minlength">
+        Book Synopsises have to atleast be 22 characters long, you know cause of catch 22.
+        <span class="badge-warning">
+          {{"(" +
+            uploadForm.controls.bookSynopsis.errors.minlength?.actualLength
+             + "/" +
+            uploadForm.controls.bookSynopsis.errors.minlength?.requiredLength
+          + ")"}}
+        </span>
+      </p>
+      <button
+      (click)="onNextPress('synopsis')"
+      type="button"
+      class="btn btn-dark"
+      [disabled]="uploadForm.controls.bookSynopsis.status === 'INVALID'"
+      >
+        Next
+      </button>
+    </div>
+    <div class="form-group"
+    #genreInput
+    *ngIf="!!bookSynopsis && !existingGenre"
+    >
       <label>Genre</label>
-      <select class="form-control" formControlName="genre" name="genre">
+      <select class="form-control" formControlName="genre" name="genre" >
         <option value="Javascript/React">Javascript/React</option>
         <option value="Javascript/TypeScript/Angular">TypeScript/Angular</option>
         <option value="/Javascript/Node/Express">Node JS/ Express JS</option>
@@ -32,14 +120,36 @@
       [(ngModel)]="customGenre" type="text" name="custom-genre"
       class="form-control mTop"
       placeholder="Fill in the book's genre here..."/>
+      <button
+      (click)="onNextPress('genre')"
+      type="button"
+      class="btn btn-dark"
+      [disabled]="uploadForm.controls.genre.status === 'INVALID'"
+      >
+        Next
+      </button>
     </div>
-    <div class="form-group">
+    <div class="form-group"
+    #authorInputs
+    *ngIf="!!existingGenre && !authorName && !authorHonorableMention"
+    >
       <label>Author Name</label>
-      <input type="text" class="form-control" formControlName="authorName"/>
-      <p class="text-danger" *ngIf="uploadForm.controls.authorName.status != 'VALID' && uploadForm.controls.authorName.touched && uploadForm.controls.authorName.errors.required">
+      <input type="text"
+      class="form-control"
+      formControlName="authorName"
+      placeholder="Nadir Dabit"/>
+      <p class="text-danger"
+      *ngIf="uploadForm.controls.authorName.status != 'VALID' &&
+      uploadForm.controls.authorName.touched &&
+      uploadForm.controls.authorName.errors.required"
+      >
         Author Name is required!
       </p>
-      <p class="text-danger" *ngIf="uploadForm.controls.authorName.status != 'VALID' && uploadForm.controls.authorName.touched && uploadForm.controls.authorName.errors.authorNameErr">
+      <p class="text-danger"
+      *ngIf="uploadForm.controls.authorName.status != 'VALID' &&
+      uploadForm.controls.authorName.touched &&
+      uploadForm.controls.authorName.errors.authorNameErr"
+      >
         {{uploadForm.controls.authorName.errors.authorNameErr.message}}
       </p>
       <label>Honorable Mention</label>
@@ -48,10 +158,46 @@
         type="text" class="form-control"
         formControlName="authorHonorableMention">
       </textarea>
-      <p class="text-danger" *ngIf="uploadForm.controls.authorHonorableMention.status != 'VALID' && uploadForm.controls.authorHonorableMention.touched && uploadForm.controls.authorHonorableMention.errors.required">
-        Author Name is required!
+      <p class="text-danger"
+      *ngIf="uploadForm.controls.authorHonorableMention.status != 'VALID' &&
+      uploadForm.controls.authorHonorableMention.touched &&
+      uploadForm.controls.authorHonorableMention.errors.required"
+      >
+        A few words of thanks for the author are required!
       </p>
+      <p class="text-danger"
+      *ngIf="uploadForm.controls.authorHonorableMention.status != 'VALID' &&
+      uploadForm.controls.authorHonorableMention.touched &&
+      uploadForm.controls.authorHonorableMention.errors.minlength"
+      >
+        A few words of thanks for the author are required!
+        <span class="badge-pill">
+          {{"(" +
+            uploadForm.controls.authorHonorableMention.errors.minlength?.actualLength
+             + "/" +
+            uploadForm.controls.authorHonorableMention.errors.minlength?.requiredLength
+          + ")"}}
+        </span>
+      </p>
+      <button
+      (click)="onNextPress('author')"
+      type="button"
+      class="btn btn-dark"
+      [disabled]="uploadForm.status === 'INVALID'"
+      >
+        Next
+      </button>
     </div>
   </div>
-  <button type="submit" class="btn btn-dark">Submit</button>
+  <div class="form-group"
+  #reviewForm
+  *ngIf="!!authorHonorableMention && !!authorName && uploadForm.status === 'VALID'"
+  >
+    <button type="submit"
+    class="btn btn-dark"
+    [disabled]="uploadForm.status === 'INVALID'"
+    >Submit
+    </button>
+  </div>
 </form>
+</div>

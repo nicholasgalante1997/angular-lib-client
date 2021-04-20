@@ -19,4 +19,11 @@ export class AuthorService {
     return this.http.get<Author>(adjustedEndpoint);
   }
 
+  create(author: Author): Observable<string> {
+    const adjustedEndpoint = `${env.API_DOMAIN}/${this.baseEndpoint}`;
+    return this.http.post<string>(adjustedEndpoint, {
+      name: author.name,
+      mention: author.mention
+    });
+  }
 }
