@@ -17,12 +17,23 @@ export class BookService {
   }
 
   getBookOfTheDay(): Observable<Book> {
-    const adjustedEndpoint: string = `${env.API_DOMAIN}/${this.baseEndpoint}/7`;
+    const adjustedEndpoint = `${env.API_DOMAIN}/${this.baseEndpoint}/4`;
     return this.http.get<Book>(adjustedEndpoint);
   }
 
   getBookById(bookId: number): Observable<Book> {
-    const adjustedEndpoint: string = `${env.API_DOMAIN}/${this.baseEndpoint}/${bookId}`;
+    const adjustedEndpoint = `${env.API_DOMAIN}/${this.baseEndpoint}/${bookId}`;
     return this.http.get<Book>(adjustedEndpoint);
+  }
+
+  create(book: Book): Observable<string> {
+    const adjustedEndpoint: string = `${env.API_DOMAIN}/${this.baseEndpoint}`;
+    return this.http.post<string>(adjustedEndpoint, {
+      genreId: book.genreId,
+      authorId: book.authorId,
+      title: book.title,
+      synopsis: book.synopsis,
+      coverUrl: book.coverUrl
+    });
   }
 }

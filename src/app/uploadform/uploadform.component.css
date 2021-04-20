@@ -8,19 +8,18 @@
 }
 
 .leadText{
-  font-size: 44px;
+  font-size: 24px;
   color: aliceblue;
-  font-variant: small-caps;
   font-style: italic;
 }
 
 .labelText {
-  font-size: 32px;
+  font-size: 30px;
   color: aliceblue;
-  font-variant-caps: titling-caps;
   text-align: center;
   align-self: center;
   margin-bottom: 22px;
+  font-variant-caps: petite-caps;
 }
 
 .customInput {

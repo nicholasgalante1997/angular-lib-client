@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import Author from '../models/author';
 import Book from '../models/book';
 import Genre from '../models/genre';
 import { AuthorService } from '../services/author.service';
+import { BookService } from '../services/book.service';
 import { GenreServiceService } from '../services/genre-service.service';
 
 @Component({
@@ -21,11 +23,14 @@ export class UploadformComponent implements OnInit {
   customGenre: string;
   authorName: string;
   authorHonorableMention: string;
+  isLoading: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private genreService: GenreServiceService,
-    private authorService: AuthorService
+    private authorService: AuthorService,
+    private bookService: BookService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -64,21 +69,27 @@ export class UploadformComponent implements OnInit {
 
   async onFormSubmission($event) {
     $event.preventDefault();
+    // this.isLoading = true;
 
-    console.log(this.uploadForm);
-    // const genreObject: Genre = new Genre(this.uploadForm.controls.genre.value);
-    // const newGenreId: string = await this.genreService.create(genreObject).toPromise();
-    // console.log(newGenreId);
+    const genreObject: Genre = new Genre(this.uploadForm.controls.genre.value);
+    const newGenreId: string = await this.genreService.create(genreObject).toPromise();
 
-    // const authorObject: Author =
-    //   new Author(this.uploadForm.controls.authorName.value,
-    //   this.uploadForm.controls.authorHonorableMention.value);
-    // console.log(authorObject, 'prior');
-    // const authorId: string = await this.authorService.create(authorObject).toPromise();
-    // console.log(authorId, 'post');
+    const authorObject: Author =
+      new Author(this.uploadForm.controls.authorName.value,
+      this.uploadForm.controls.authorHonorableMention.value);
+    const newAuthorId: string = await this.authorService.create(authorObject).toPromise();
 
-    // const bookObject: Book = new Book(this.uploadForm.controls.bookTitle.value,
-    //   this.uploadForm.)
+    const bookObject: Book = new Book(
+      parseInt(newAuthorId, 10),
+      parseInt(newGenreId, 10),
+      this.uploadForm.controls.bookTitle.value,
+      this.uploadForm.controls.bookSynopsis.value,
+      this.uploadForm.controls.bookImgUrl.value
+    );
+    const newBookId: string = await this.bookService.create(bookObject).toPromise();
+    console.log(newBookId);
+    // this.router.navigate(['post', 'success', newBookId]);
+    // this.isLoading = false;
   }
 
   onNextPress(current: string): void {

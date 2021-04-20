@@ -3,3 +3,25 @@
   align-items: center;
   justify-content: center;
 }
+
+.leadText{
+  font-size: 24px;
+  color: aliceblue;
+  font-style: italic;
+}
+
+.subLead {
+  font-size: 14px;
+  color: aliceblue;
+  font-variant: small-caps;
+}
+
+p {
+  color: white;
+}
+
+li {
+  color: lightskyblue;
+  font-size: 14px;
+  font-style: italic;
+}
