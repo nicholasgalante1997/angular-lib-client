@@ -21,6 +21,7 @@ import { SearchPipe } from './search.pipe';
 import { GenrePipe } from './genre.pipe';
 import { UploadPageComponent } from './upload-page/upload-page.component';
 import { UploadformComponent } from './uploadform/uploadform.component';
+import { SuccessPageComponent } from './success-page/success-page.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { UploadformComponent } from './uploadform/uploadform.component';
     SearchPipe,
     GenrePipe,
     UploadPageComponent,
-    UploadformComponent
+    UploadformComponent,
+    SuccessPageComponent
   ],
   imports: [
     BrowserModule,

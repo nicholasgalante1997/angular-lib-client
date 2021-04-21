@@ -2,7 +2,9 @@
   <h6 class="text-lg-center leadText">We love donations to our library!</h6>
   <h6 class="text-lg-center leadText">Seriously!</h6>
   <hr>
-  <small style="font-size: 16px; color: aliceblue; margin-bottom: auto;">If you'd like to add a book to our library, just fill out this form below</small>
+  <small style="font-size: 16px; color: aliceblue; margin-bottom: auto;">
+    If you'd like to add a book to our library, just fill out this form below
+  </small>
   <div class="form-group">
     <div class="form-group"
     #bookTitleInput
@@ -45,7 +47,7 @@
       <input type="text"
       class="form-control customInput"
       formControlName="bookImgUrl"
-      placeholder="http://..."
+      placeholder="https://source.unsplash.com/random"
       />
       <p class="text-danger"
       *ngIf="uploadForm.controls.bookImgUrl.status != 'VALID' &&
@@ -88,7 +90,11 @@
       >
         The book synopsis is required so other readers can know what this book is about
       </p>
-      <p class="text-danger" *ngIf="uploadForm.controls.bookSynopsis.status != 'VALID' && uploadForm.controls.bookSynopsis.touched && uploadForm.controls.bookSynopsis.errors.minlength">
+      <p class="text-danger"
+      *ngIf="uploadForm.controls.bookSynopsis.status != 'VALID' &&
+      uploadForm.controls.bookSynopsis.touched &&
+      uploadForm.controls.bookSynopsis.errors.minlength"
+      >
         Book Synopsises have to atleast be 22 characters long, you know cause of catch 22.
         <span class="badge-warning">
           {{"(" +
@@ -121,8 +127,10 @@
       <label class="labelText">Genre</label>
       <select class="form-control customInput"
       formControlName="genre"
-      name="genre" >
-        <option value="Javascript/React">Javascript/React</option>
+      name="genre"
+      *ngIf="availableGenres.length > 0"
+      >
+        <!-- <option value="Javascript/React">Javascript/React</option>
         <option value="Javascript/TypeScript/Angular">TypeScript/Angular</option>
         <option value="/Javascript/Node/Express">Node JS/ Express JS</option>
         <option value="Java">Java</option>
@@ -131,6 +139,8 @@
         <option value="Ruby on Rails">Ruby on Rails</option>
         <option value="CSS/Bootstrap">Bootstrap/CSS</option>
         <option value="Serverless/AWS">AWS</option>
+        -->
+        <option *ngFor="let genre of availableGenres" [value]="genre.genreId">{{genre.genre}}</option>
         <option value="Other">Other</option>
       </select>
       <input *ngIf="uploadForm.controls.genre.value === 'Other'"

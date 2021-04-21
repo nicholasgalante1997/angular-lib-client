@@ -3,15 +3,24 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import Book from '../models/book';
 import env from 'env';
-import { filter } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class BookService {
   private baseEndpoint = 'books';
   constructor(private http: HttpClient) {}
 
+  create(book: Book): Observable<string> {
+    const adjustedEndpoint: string = `${env.API_DOMAIN}/${this.baseEndpoint}`;
+    return this.http.post<string>(adjustedEndpoint, {
+      genreId: book.genreId,
+      authorId: book.authorId,
+      title: book.title,
+      synopsis: book.synopsis,
+      coverUrl: book.coverUrl
+    });
+  }
+
   getAllBooks(): Observable<Book[]> {
-    // tslint:disable-next-line: no-inferrable-types
     const adjustedEndpoint: string = `${env.API_DOMAIN}/${this.baseEndpoint}`;
     return this.http.get<Book[]>(adjustedEndpoint);
   }
@@ -26,14 +35,4 @@ export class BookService {
     return this.http.get<Book>(adjustedEndpoint);
   }
 
-  create(book: Book): Observable<string> {
-    const adjustedEndpoint: string = `${env.API_DOMAIN}/${this.baseEndpoint}`;
-    return this.http.post<string>(adjustedEndpoint, {
-      genreId: book.genreId,
-      authorId: book.authorId,
-      title: book.title,
-      synopsis: book.synopsis,
-      coverUrl: book.coverUrl
-    });
-  }
 }

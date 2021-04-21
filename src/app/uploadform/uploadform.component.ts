@@ -16,6 +16,7 @@ import { GenreServiceService } from '../services/genre-service.service';
 export class UploadformComponent implements OnInit {
 
   uploadForm: FormGroup;
+  availableGenres: Genre[] = [];
   bookTitle: string;
   bookSynopsis: string;
   bookCoverUrl: string;
@@ -23,7 +24,7 @@ export class UploadformComponent implements OnInit {
   customGenre: string;
   authorName: string;
   authorHonorableMention: string;
-  isLoading: boolean = false;
+  isLoading = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,6 +33,13 @@ export class UploadformComponent implements OnInit {
     private bookService: BookService,
     private router: Router
   ) { }
+
+  static doubleCheck(status: string): boolean {
+    if (status === 'VALID') {
+      return true;
+    }
+    return false;
+  }
 
   ngOnInit(): void {
     this.uploadForm = this.formBuilder.group({
@@ -42,6 +50,12 @@ export class UploadformComponent implements OnInit {
         authorName: ['', [Validators.required, this.customAuthorNameValidation]],
         authorHonorableMention: ['', [Validators.required, Validators.minLength(4)]]
     });
+    this.genreService.getGenres().subscribe(
+      (genres: Genre[]) => {
+        for (let genre of genres){
+          this.availableGenres.push(genre);
+        }
+      });
   }
 
   onSubmit($event): void {
@@ -68,17 +82,24 @@ export class UploadformComponent implements OnInit {
   }
 
   async onFormSubmission($event) {
+    // stop the force reloading
     $event.preventDefault();
-    // this.isLoading = true;
-
+    // set loading indicator
+    this.isLoading = true;
+    // validate fprm data
+    if (!UploadformComponent.doubleCheck(this.uploadForm.status)){
+      alert('Woops, the form is filled out incorrectly.');
+      return;
+    }
+    // new genre creation
     const genreObject: Genre = new Genre(this.uploadForm.controls.genre.value);
     const newGenreId: string = await this.genreService.create(genreObject).toPromise();
-
+    // new author creation
     const authorObject: Author =
       new Author(this.uploadForm.controls.authorName.value,
       this.uploadForm.controls.authorHonorableMention.value);
     const newAuthorId: string = await this.authorService.create(authorObject).toPromise();
-
+    // new book creation
     const bookObject: Book = new Book(
       parseInt(newAuthorId, 10),
       parseInt(newGenreId, 10),
@@ -87,9 +108,11 @@ export class UploadformComponent implements OnInit {
       this.uploadForm.controls.bookImgUrl.value
     );
     const newBookId: string = await this.bookService.create(bookObject).toPromise();
-    console.log(newBookId);
-    // this.router.navigate(['post', 'success', newBookId]);
-    // this.isLoading = false;
+    // navigate to the successful upload page
+    this.router.navigate(['post', 'success', newBookId]);
+    // turn off loading indicator && reset form
+    this.isLoading = false;
+    this.uploadForm = undefined;
   }
 
   onNextPress(current: string): void {

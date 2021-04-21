@@ -5,6 +5,7 @@ import { BookShowPageComponent } from './book-show-page/book-show-page.component
 import { HomePageComponent } from './home-page/home-page.component';
 import { LibraryPageComponent } from './library-page/library-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
+import { SuccessPageComponent } from './success-page/success-page.component';
 import { UploadPageComponent } from './upload-page/upload-page.component';
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'library/shelves', component: LibraryPageComponent, pathMatch: 'full'},
   {path: 'library/shelves/book/:id', component: BookShowPageComponent},
   {path: 'upload', component: UploadPageComponent, pathMatch: 'full'},
+  {path: 'post/success/:id', component: SuccessPageComponent},
   {path: 'bleh', component: PageNotFoundComponent },
   {path: '**', redirectTo: 'bleh'}
 ];
