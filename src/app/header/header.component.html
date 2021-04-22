@@ -10,16 +10,23 @@
     <p><em>{{subTitle}}</em></p>
   </li>
   <li class="nav-item ml-auto">
-    <a [routerLink]="['/library/shelves']" class="nav-custom-link">Lib</a>
+    <a [routerLink]="['/library/shelves']"
+    routerLinkActive="active-link"
+    [routerLinkActiveOptions]="{exact:true}"
+    class="nav-custom-link"
+    >Browse
+    </a>
   </li>
   <li class="nav-item">
-    <a [routerLink]="['upload']" class="nav-custom-link">Contribute</a>
+    <a [routerLink]="['upload']"
+    routerLinkActive="active-link"
+    [routerLinkActiveOptions]="{exact:true}"
+    class="nav-custom-link">
+    Contribute
+    </a>
   </li>
-  <li class="nav-item">
-    <a href="#" class="nav-custom-link">For You</a>
-  </li>
-  <li class="nav-item">
-    <a href="#" class="nav-custom-link">About</a>
+  <li  routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+    <a [routerLink]="['/', 'about']" class="nav-custom-link">About</a>
   </li>
 </ul>
 </nav>

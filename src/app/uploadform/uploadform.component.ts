@@ -91,26 +91,35 @@ export class UploadformComponent implements OnInit {
       alert('Woops, the form is filled out incorrectly.');
       return;
     }
+    let genreId: string;
+    if (this.uploadForm.controls.genre.value === 'Other'){
     // new genre creation
-    const genreObject: Genre = new Genre(this.uploadForm.controls.genre.value);
-    const newGenreId: string = await this.genreService.create(genreObject).toPromise();
+      const genreObject: Genre = new Genre(this.uploadForm.controls.genre.value);
+      const newGenreId: string = await this.genreService.create(genreObject).toPromise();
+      genreId = newGenreId;
+    } else {
+      genreId = this.uploadForm.controls.genre.value;
+    }
+
     // new author creation
     const authorObject: Author =
       new Author(this.uploadForm.controls.authorName.value,
       this.uploadForm.controls.authorHonorableMention.value);
     const newAuthorId: string = await this.authorService.create(authorObject).toPromise();
+
     // new book creation
     const bookObject: Book = new Book(
       parseInt(newAuthorId, 10),
-      parseInt(newGenreId, 10),
+      parseInt(genreId, 10),
       this.uploadForm.controls.bookTitle.value,
       this.uploadForm.controls.bookSynopsis.value,
       this.uploadForm.controls.bookImgUrl.value
     );
     const newBookId: string = await this.bookService.create(bookObject).toPromise();
-    // navigate to the successful upload page
+
+    // // navigate to the successful upload page
     this.router.navigate(['post', 'success', newBookId]);
-    // turn off loading indicator && reset form
+    // // turn off loading indicator && reset form
     this.isLoading = false;
     this.uploadForm = undefined;
   }

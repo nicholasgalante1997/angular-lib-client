@@ -130,16 +130,6 @@
       name="genre"
       *ngIf="availableGenres.length > 0"
       >
-        <!-- <option value="Javascript/React">Javascript/React</option>
-        <option value="Javascript/TypeScript/Angular">TypeScript/Angular</option>
-        <option value="/Javascript/Node/Express">Node JS/ Express JS</option>
-        <option value="Java">Java</option>
-        <option value="Java/Spring Boot">Java/Spring Boot</option>
-        <option value="Ruby">Ruby</option>
-        <option value="Ruby on Rails">Ruby on Rails</option>
-        <option value="CSS/Bootstrap">Bootstrap/CSS</option>
-        <option value="Serverless/AWS">AWS</option>
-        -->
         <option *ngFor="let genre of availableGenres" [value]="genre.genreId">{{genre.genre}}</option>
         <option value="Other">Other</option>
       </select>

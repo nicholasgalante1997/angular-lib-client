@@ -1,0 +1,12 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.icon {
+  color: green;
+  align-self: center;
+}
