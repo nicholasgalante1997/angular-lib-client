@@ -4,5 +4,16 @@
 
 .text {
   color: white;
+  font-family: 'Raleway', sans-serif;
+}
+
+.dark-link {
+  color: darkred;
+  font-family: 'Raleway', sans-serif;
+}
+
+em {
+  margin-left: 12px;
+  font-family: 'Raleway', sans-serif;
 }
 

@@ -2,17 +2,14 @@
   object-fit: contain;
 }
 
-.shadowbox {
-  /* background-color: #407294; */
-  border-radius: 15px;
-}
-
 .curve {
-  border-radius: 16px;
+  border-radius: 2px;
+  -webkit-box-shadow: 10px 9px 3px 3px rgba(0,0,0,0.51);
+  box-shadow: 10px 9px 3px 3px rgba(0,0,0,0.51);
 }
 
 .bg-offset {
-  background-color: #409462;
+  background-color: #191970;
 }
 
 .title-text {
@@ -21,10 +18,12 @@
 
 h4 {
   color: whitesmoke;
+  font-family: 'Raleway', sans-serif;
 }
 
 p {
   color: white;
   font-size: small;
   font-style: italic;
+  font-family: 'Raleway', sans-serif;
 }

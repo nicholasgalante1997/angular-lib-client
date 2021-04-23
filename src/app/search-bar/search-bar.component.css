@@ -4,6 +4,12 @@
   justify-content: center;
 }
 
-.space-left {
+.btn-cust {
   margin-left: 16px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.search-bar {
+  font-family: 'Raleway', sans-serif;
+  border-radius: 4px;
 }

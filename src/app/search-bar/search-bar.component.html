@@ -1,5 +1,5 @@
 <div class="custom-row">
-<input placeholder="Search for a book here " type="text" name="search" #search [(ngModel)]="searchValue" (input)="onInput()">
-<button class="btn btn-primary space-left" (click)="onSearchPress()">Search </button>
-<button class="btn btn-warning space-left" (click)="onResetPress()">Reset</button>
+<input class="search-bar" placeholder="Search for a book here " type="text" name="search" #search [(ngModel)]="searchValue" (input)="onInput()">
+<button class="btn btn-primary btn-cust" (click)="onSearchPress()">Search </button>
+<button class="btn btn-warning btn-cust" (click)="onResetPress()">Reset</button>
 </div>

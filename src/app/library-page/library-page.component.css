@@ -1,3 +1,11 @@
 .lower {
   margin-top: 16px;
 }
+
+h6 {
+  font-family: 'Raleway', sans-serif;
+  color: ghostwhite;
+  border-bottom: 2px solid black;
+  width: fit-content;
+  font-size: 44px;
+}

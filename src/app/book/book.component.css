@@ -3,6 +3,12 @@ h6 {
   font-size: 32px;
   color: white;
   font-style: italic;
+  font-family: 'Raleway', sans-serif;
+}
+
+p {
+  font-family: 'Raleway', sans-serif;
+  color: white;
 }
 
 .book {
@@ -12,4 +18,5 @@ h6 {
 
 .left {
   margin-left: 88px;
+  font-family: 'Raleway', sans-serif;
 }
