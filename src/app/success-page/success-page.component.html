@@ -9,10 +9,10 @@
         <h6 class="display-4 text-success">Success!</h6>
     </div>
     <div class="col-lg-6 offset-lg-3 col-md-6 offset-md-3 col-sm-12 col-xs-12 main">
-      <p>Thank you for adding <em class="text-primary">{{uploadedBook.title}}</em> to our library!</p>
+      <p>Thank you for adding <em class="text-warning">{{uploadedBook.title}}</em> to our library!</p>
       <p>We appreciate it!</p>
       <p>To view your contribution in all of it's glory,
-        <a [routerLink]="['/', 'library', 'shelves', 'book', uploadedBook.bookId]">
+        <a class="text-danger" [routerLink]="['/', 'library', 'shelves', 'book', uploadedBook.bookId]">
           click here!
         </a>
       </p>

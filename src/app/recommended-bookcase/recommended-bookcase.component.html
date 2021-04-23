@@ -3,9 +3,6 @@
     <h4>Similar Reads</h4>
   </div>
   <div class="row"  *ngFor="let book of books | genre: displayBook.genreId">
-    <!-- <a [routerLink]="['/', 'library', 'shelves', 'book', book.bookId]">
-      {{book.title}}
-    </a> -->
     <a [href]="'/library/shelves/book/' + book.bookId">
       {{book.title}}
     </a>

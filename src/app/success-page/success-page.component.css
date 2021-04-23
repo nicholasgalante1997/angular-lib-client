@@ -10,3 +10,7 @@
   color: green;
   align-self: center;
 }
+
+p, a {
+  font-family: 'Raleway', sans-serif;
+}

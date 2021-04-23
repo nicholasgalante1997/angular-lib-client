@@ -5,12 +5,12 @@
         <img [src]="book.coverUrl" height="300px" style="resize: contain;">
       </div>
       <div class="col-5">
-        <h6>{{book.title}}</h6>
+        <h6 class="display-4">{{book.title}}</h6>
         <p *ngIf="author"><strong>{{author.name}}</strong></p>
         <p *ngIf="author"><small>{{author.mention}}</small></p>
-        <p>{{book.synopsis}}</p>
-        <p><em>Related Genres: </em></p>
-        <p *ngIf="genre"><small>{{genre.genre}}</small></p>
+        <p class="pop">{{book.synopsis}}</p>
+        <p class="pop"><em>Related Genres: </em></p>
+        <p class="pop" *ngIf="genre"><small>{{genre.genre}}</small></p>
       </div>
       <div class="col-3">
         <app-recommended-bookcase [displayBook]="book"></app-recommended-bookcase>
