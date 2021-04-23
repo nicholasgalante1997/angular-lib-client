@@ -3,3 +3,13 @@
   align-items: center;
   display: flex;
 }
+
+p {
+  font-family: 'Raleway', sans-serif;
+  color: aliceblue;
+ }
+
+ a {
+  font-family: 'Raleway', sans-serif;
+  color: purple
+ }

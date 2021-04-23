@@ -1,32 +1,34 @@
-<nav class="navbar-nav navbar-light nav-custom">
-<ul class="nav">
-  <li class="nav-item">
-      <img [src]="logoUrl" width="40px" height="45px" class="navbar-brand"/>
-  </li>
-  <li class="nav-item">
-   <a href="#"><h4>{{title}}</h4></a>
-  </li>
-  <li class="nav-item">
-    <p><em>{{subTitle}}</em></p>
-  </li>
-  <li class="nav-item ml-auto">
-    <a [routerLink]="['/library/shelves']"
-    routerLinkActive="active-link"
-    [routerLinkActiveOptions]="{exact:true}"
-    class="nav-custom-link"
-    >Browse
-    </a>
-  </li>
-  <li class="nav-item">
-    <a [routerLink]="['upload']"
-    routerLinkActive="active-link"
-    [routerLinkActiveOptions]="{exact:true}"
-    class="nav-custom-link">
-    Contribute
-    </a>
-  </li>
-  <li  routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
-    <a [routerLink]="['/', 'about']" class="nav-custom-link">About</a>
-  </li>
-</ul>
+<nav class="navbar navbar-expand-lg navbar-light nav-custom">
+  <img [src]="logoUrl" width="40px" height="45px" class="navbar-brand"/>
+  <a class="navbar-brand" href="/"><h4>{{title}}</h4></a>
+  <p><em>{{subTitle}}</em></p>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul  class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a [routerLink]="['/']"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{exact:true}"
+        class="nav-custom-link">Home</a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['/library/shelves']"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{exact:true}"
+        class="nav-custom-link"
+        >Browse
+        </a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['upload']"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{exact:true}"
+        class="nav-custom-link">
+        Contribute
+        </a>
+      </li>
+    </ul>
+  </div>
 </nav>

@@ -1,5 +1,16 @@
-<div class="custom-row">
+<!-- <div class="custom-row">
 <input class="search-bar" placeholder="Search for a book here " type="text" name="search" #search [(ngModel)]="searchValue" (input)="onInput()">
 <button class="btn btn-primary btn-cust" (click)="onSearchPress()">Search </button>
 <button class="btn btn-warning btn-cust" (click)="onResetPress()">Reset</button>
+</div> -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+      <input class="search-bar" placeholder="Search for a book here " type="text" name="search" #search [(ngModel)]="searchValue" (input)="onInput()">
+    </div>
+    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12" style="display:flex;flex-direction: row; margin-left: 8px;">
+      <button class="btn btn-primary btn-cust" (click)="onSearchPress()">Search </button>
+      <button class="btn btn-warning btn-cust" (click)="onResetPress()">Reset</button>
+    </div>
+  </div>
 </div>

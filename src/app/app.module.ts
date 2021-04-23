@@ -22,6 +22,7 @@ import { GenrePipe } from './genre.pipe';
 import { UploadPageComponent } from './upload-page/upload-page.component';
 import { UploadformComponent } from './uploadform/uploadform.component';
 import { SuccessPageComponent } from './success-page/success-page.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { SuccessPageComponent } from './success-page/success-page.component';
     GenrePipe,
     UploadPageComponent,
     UploadformComponent,
-    SuccessPageComponent
+    SuccessPageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 <form [formGroup]="uploadForm" (ngSubmit)="onFormSubmission($event)">
-  <h6 class="text-lg-center leadText">We love donations!</h6>
-  <h6 class="text-lg-center leadText">Seriously!</h6>
+  <h6 class="text-lg-center text-center leadText">We love donations!</h6>
+  <h6 class="text-lg-center text-center leadText">Seriously!</h6>
   <hr>
   <small style="font-size: 16px; color: aliceblue; margin-bottom: auto;font-family: 'Raleway', sans-serif;">
     If you'd like to add a book to our library, just fill out this form below
@@ -229,7 +229,6 @@
   <p>Title: {{uploadForm.controls.bookTitle.value}}</p>
   <p>Image: <img class="img-fluid" [src]="bookCoverUrl" width="40px" height="40px" style="resize: cover;" /></p>
   <p>Synopsis: {{uploadForm.controls.bookSynopsis.value}}</p>
-  <p>Genre: {{existingGenre}}</p>
   <p>Author: {{uploadForm.controls.authorName.value}}</p>
   <p>Mention: {{uploadForm.controls.authorHonorableMention.value}}</p>
     <button type="submit"
